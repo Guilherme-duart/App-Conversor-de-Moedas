@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Currency Converter
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Moeda Origem</ion-label>
+    <ion-select [(ngModel)]="fromCurrency">
+      <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+        {{ currency }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Moeda Destino</ion-label>
+    <ion-select [(ngModel)]="toCurrency">
+      <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+        {{ currency }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Valor: </ion-label>
+    <ion-input [(ngModel)]="amount" type="number"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="convert()">Converter</ion-button>
+
+  <ion-item *ngIf="result">
+    <ion-label>{{ amount }} {{ fromCurrency }} = {{ result }} {{ toCurrency }}</ion-label>
+  </ion-item>
+</ion-content>
